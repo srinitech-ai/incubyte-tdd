@@ -24,3 +24,10 @@ describe('String Calculator - Step 2', () => {
   });
 });
 
+describe('String Calculator - Step 3', () => {
+  it('handles newlines as delimiters along with commas', () => {
+    expect(add('1\n2,3')).toBe(6);
+    expect(add('4\n5\n6')).toBe(15);
+  });
+});
+
