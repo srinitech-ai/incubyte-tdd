@@ -31,3 +31,10 @@ describe('String Calculator - Step 3', () => {
   });
 });
 
+describe('String Calculator - Step 4', () => {
+  it('supports a custom single-character delimiter using //;\\n syntax', () => {
+    expect(add('//;\n1;2')).toBe(3);
+    expect(add('//#\n2#3#4')).toBe(9);
+  });
+});
+
