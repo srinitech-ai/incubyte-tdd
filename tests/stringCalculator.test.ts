@@ -38,3 +38,13 @@ describe('String Calculator - Step 4', () => {
   });
 });
 
+describe('String Calculator - Step 5', () => {
+  it('throws on a single negative number with the value in message', () => {
+    expect(() => add('1,-2,3')).toThrow('negatives not allowed: -2');
+  });
+
+  it('throws listing all negative numbers in the message', () => {
+    expect(() => add('1,-2,-3,4')).toThrow('negatives not allowed: -2,-3');
+  });
+});
+

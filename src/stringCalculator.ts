@@ -11,8 +11,11 @@ export function add(input: string): number {
     numbersSection = input.slice(newlineIndex + 1);
   }
   const normalized = numbersSection.replace(/\n/g, delimiter);
-  const parts = normalized.split(',');
-  const finalParts = delimiter === ',' ? parts : normalized.split(delimiter);
-  return finalParts.reduce((sum, n) => sum + Number(n), 0);
+  const parts = delimiter === ',' ? normalized.split(',') : normalized.split(delimiter);
+  const negatives = parts.map(Number).filter((n) => n < 0);
+  if (negatives.length > 0) {
+    throw new Error(`negatives not allowed: ${negatives.join(',')}`);
+  }
+  return parts.reduce((sum, n) => sum + Number(n), 0);
 }
 
