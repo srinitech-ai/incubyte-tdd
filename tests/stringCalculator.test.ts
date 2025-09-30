@@ -32,7 +32,7 @@ describe('String Calculator - Step 3', () => {
 });
 
 describe('String Calculator - Step 4', () => {
-  it('supports a custom single-character delimiter using //;\\n syntax', () => {
+  it('supports a custom single-character delimiter using //;\n syntax', () => {
     expect(add('//;\n1;2')).toBe(3);
     expect(add('//#\n2#3#4')).toBe(9);
   });
@@ -48,3 +48,23 @@ describe('String Calculator - Step 5', () => {
   });
 });
 
+// ignoring > 1000
+test('numbers greater than 1000 are ignored', () => {
+  expect(add('2,1001')).toBe(2);
+  expect(add('1000,1001,3')).toBe(1003);
+});
+
+// multi-length delimiters
+test('allows delimiters of any length', () => {
+  expect(add('//[***]\n1***2***3')).toBe(6);
+});
+
+// multiple delimiters
+test('allows multiple delimiters', () => {
+  expect(add('//[*][%]\n1*2%3')).toBe(6);
+});
+
+// multiple delimiters with length >1
+test('allows multiple delimiters with length >1', () => {
+  expect(add('//[foo][bar]\n1foo2bar3')).toBe(6);
+});
